@@ -1,21 +1,102 @@
- import React from 'react'
- import Search from '../components/Search' 
- import SortRepos from '../components/SortRepos'
- import ProfileInfo from '../components/ProfileInfo'
- import Repos from '../components/Repos'
- 
- const HomePage = () => {
-   return (
-     <div className='m-4'>
-      <Search />
-      <SortRepos />
-      <div className='flex gap-4 flex-col lg:flex-row justify-center items-start'>
-        <ProfileInfo/>
-        <Repos/>
+import React, { useCallback, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+
+import ProfileInfo from "../components/ProfileInfo";
+import Repos from "../components/Repos";
+import Search from "../components/Search";
+import SortRepos from "../components/SortRepos";
+import Spinner from "../components/Spinner";
+
+const HomePage = () => {
+  const [userProfile, setUserProfile] = useState(null);
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const [sortType, setSortType] = useState("recent");
+
+  const getUserProfileAndRepos = useCallback(async (username = "chiraaax") => {
+    setLoading(true);
+    try {
+      // 60 reqired per hour, 5000 reqests per hour for authenticated requests
+      // https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28
+      const userRes = await fetch(`https://api.github.com/users/${username}`, {
+        headers: {
+          authorization: `token ${import.meta.env.VITE_GITHUB_ACCESS_KEY}`,
+        },
+      });
+
+      if (!userRes.ok) {
+        throw new Error("User not found");
+      }
+
+      if (!reposRes.ok) {
+        throw new Error("Failed to fetch repositories");
+      }
+
+      const repos = await reposRes.json();
+
+      // Sort repos by created_at (recent first)
+      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+      setRepos(repos);
+      setUserProfile(userProfile);
+
+      return { userProfile, repos };
+    } catch (error) {
+      toast.error(error.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    getUserProfileAndRepos();
+  }, [getUserProfileAndRepos]);
+
+  const onSearch = async (e, username) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setRepos([]);
+    setUserProfile(null);
+
+    const { userProfile, repos } = await getUserProfileAndRepos(username);
+
+    setUserProfile(userProfile);
+    setRepos(repos);
+    setLoading(false);
+    setSortType("recent");
+  };
+
+  const onSort = (sortType) => {
+    let sortedRepos = [...repos]; // Create a copy of the repos array
+
+    if (sortType === "recent") {
+      sortedRepos.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
+    } else if (sortType === "stars") {
+      sortedRepos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+    } else if (sortType === "forks") {
+      sortedRepos.sort((a, b) => b.forks_count - a.forks_count);
+    }
+
+    setSortType(sortType);
+    setRepos(sortedRepos);
+  };
+
+  return (
+    <div className="m-4">
+      <Search onSearch={onSearch} />
+      {repos.length > 0 && <SortRepos onSort={onSort} sortType={sortType} />}
+      <div className="flex gap-4 flex-col lg:flex-row justify-center items-start">
+        {userProfile && !loading && <ProfileInfo userProfile={userProfile} />}
+
+        {!loading && <Repos repos={repos} />}
+        {loading && <Spinner />}
       </div>
-      
-     </div>
-   )
- }
- 
- export default HomePage;
+    </div>
+  );
+};
+
+export default HomePage;
