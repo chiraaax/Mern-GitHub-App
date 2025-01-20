@@ -17,23 +17,22 @@ const HomePage = () => {
   const getUserProfileAndRepos = useCallback(async (username = "chiraaax") => {
     setLoading(true);
     try {
-      // 60 reqired per hour, 5000 reqests per hour for authenticated requests
-      // https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28
-      const userRes = await fetch(`https://api.github.com/users/${username}`, {
-        headers: {
-          authorization: `token ${import.meta.env.VITE_GITHUB_ACCESS_KEY}`,
-        },
-      });
+     
+      const res =  await fetch(`http://localhost:5000/api/users/profile/${username}`);
+      const {repos, userProfile} = await res.json();
 
-      if (!userRes.ok) {
-        throw new Error("User not found");
-      }
+      
 
-      if (!reposRes.ok) {
-        throw new Error("Failed to fetch repositories");
-      }
 
-      const repos = await reposRes.json();
+      // if (!userRes.ok) {
+      //   throw new Error("User not found");
+      // }
+
+      // if (!reposRes.ok) {
+      //   throw new Error("Failed to fetch repositories");
+      // }
+
+      // const repos = await reposRes.json();
 
       // Sort repos by created_at (recent first)
       repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
