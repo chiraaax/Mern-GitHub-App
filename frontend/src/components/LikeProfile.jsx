@@ -8,7 +8,7 @@ const LikeProfile = ({ userProfile }) => {
 
 	const isOwnProfile = authUser?.username === userProfile.login;
 
-	const handleLikeProfile = async () => {
+	const handleLikeProfile = async () => { //send a request to the endpoint
 		try {
 			const res = await fetch(`/api/users/like/${userProfile.login}`, {
 				method: "POST",
