@@ -7,7 +7,6 @@ import { FaEye } from "react-icons/fa";
 import { formatMemberSince } from "../utils/functions";
 import LikeProfile from "./LikeProfile";
 
-
 const ProfileInfo = ({ userProfile }) => {
 	// const userProfile = {
 	// 	avatar_url: "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
@@ -42,8 +41,7 @@ const ProfileInfo = ({ userProfile }) => {
 							href={userProfile?.html_url}
 							target='_blank'
 							rel='noreferrer'
-							className='bg-glass font-medium w-full text-xs p-2 rounded-md cursor-pointer border border-blue-400 flex items-center gap-2'
-						>
+							className='bg-glass font-medium w-full text-xs p-2 rounded-md cursor-pointer border border-blue-400 flex items-center gap-2'>
 							<FaEye size={16} />
 							View on Github
 						</a>
