@@ -2,36 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global body styling with more transparency */
 body {
-	background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url("/bg10.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
+  background: linear-gradient(
+    to bottom right, 
+    rgba(0, 0, 0, 0.4), /* Increased transparency of the first color */
+    rgba(0, 0, 0, 0.2) /* Increased transparency of the second color */
+  ), url("/bg10.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-/* dark mode looking scrollbar */
+/* Dark mode looking scrollbar with lighter transparency */
 ::-webkit-scrollbar {
-	width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-	background: #555;
+  background: rgba(85, 85, 85, 0.6); /* Lighter background for scrollbar track */
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #121212;
-	border-radius: 5px;
+  background: rgba(18, 18, 18, 0.7); /* Increased transparency for the thumb */
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #242424;
+  background: rgba(36, 36, 36, 0.8); /* Hover effect with more transparency */
 }
 
+/* Glass effect with increased transparency */
 @layer components {
-	.bg-glass {
-		@apply bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 
-		hover:bg-gray-600/10 border border-gray-800 text-white;
-	}
+  .bg-glass {
+    @apply bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-5; /* More transparent glass effect */
+    @apply hover:bg-gray-600/20; /* Increased transparency of the hover background */
+    @apply border border-gray-800/60; /* Slightly transparent border */
+    @apply text-white; /* Ensure text color is white */
+  }
 }
-
