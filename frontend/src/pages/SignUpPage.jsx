@@ -11,14 +11,32 @@ const SignUpPage = () => {
 					<h1 className='text-xl font-bold md:text-2xl text-center'>Create Account</h1>
 
 
-			<button
-            	type="button"
-            	className="text-white bg-gradient-to-r from-[#24292F] via-[#3A4349] to-[#24292F] bg-opacity-80 hover:from-[#24292F] hover:via-[#3A4349] hover:to-[#24292F] hover:bg-opacity-90 focus:ring-4 focus:ring-[#24292F]/50 font-medium rounded-lg flex gap-2 p-3 items-center w-full text-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
-           		onClick={handleLoginWithGithub}>
-				
-				<FaGithub className="w-5 h-5" />
-            	Sign up with Github
-         	 </button>
+					<button
+  type="button"
+  className="
+    relative overflow-hidden text-white bg-gradient-to-r 
+    from-[#24292F] via-[#3A4349] to-[#24292F] 
+    bg-opacity-80 rounded-lg flex gap-2 p-3 items-center w-full justify-center 
+    transition-all duration-300 shadow-lg hover:shadow-2xl 
+    hover:bg-opacity-90 hover:scale-105 
+    before:content-[''] before:absolute before:inset-0 
+    before:bg-gradient-to-r before:from-blue-500 before:via-purple-500 before:to-pink-500 
+    before:opacity-0 before:transition-all before:duration-300 
+    hover:before:opacity-100 hover:before:blur-lg
+    focus:outline-none
+    active:scale-95
+    group
+  "
+  onClick={handleLoginWithGithub}
+>
+  <FaGithub className="w-5 h-5 group-hover:text-blue-400 transition-all duration-300 relative z-10" />
+  <span className="relative z-10">Sign up with Github</span>
+
+  {/* Pulse animation */}
+  <div className="absolute w-full h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 animate-pulse group-hover:opacity-20 rounded-lg"></div>
+</button>
+
+
 
 					<p className='text-gray-300'>
             By signing up, you will gain access to all the app's features.
