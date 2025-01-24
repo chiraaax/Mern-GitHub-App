@@ -19,23 +19,9 @@ const HomePage = () => {
     try {
      
       const res =  await fetch(`/api/users/profile/${username}`);
-      const {repos, userProfile} = await res.json();
+      const {repos, userProfile} = await res.json();      
 
-      
-
-
-      // if (!userRes.ok) {
-      //   throw new Error("User not found");
-      // }
-
-      // if (!reposRes.ok) {
-      //   throw new Error("Failed to fetch repositories");
-      // }
-
-      // const repos = await reposRes.json();
-
-      // Sort repos by created_at (recent first)
-      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
 
       setRepos(repos);
       setUserProfile(userProfile);
@@ -48,24 +34,24 @@ const HomePage = () => {
     }
   }, []);
 
-  useEffect(() => {
-    getUserProfileAndRepos();
-  }, [getUserProfileAndRepos]);
+	useEffect(() => {
+		getUserProfileAndRepos();
+	}, [getUserProfileAndRepos]);
 
-  const onSearch = async (e, username) => {
-    e.preventDefault();
+	const onSearch = async (e, username) => {
+		e.preventDefault();
 
-    setLoading(true);
-    setRepos([]);
-    setUserProfile(null);
+		setLoading(true);
+		setRepos([]);
+		setUserProfile(null);
 
-    const { userProfile, repos } = await getUserProfileAndRepos(username);
+		const { userProfile, repos } = await getUserProfileAndRepos(username);
 
-    setUserProfile(userProfile);
-    setRepos(repos);
-    setLoading(false);
-    setSortType("recent");
-  };
+		setUserProfile(userProfile);
+		setRepos(repos);
+		setLoading(false);
+		setSortType("recent");
+	};
 
 	const onSort = (sortType) => {
 		if (sortType === "recent") {
@@ -79,18 +65,17 @@ const HomePage = () => {
 		setRepos([...repos]);
 	};
 
-  return (
-    <div className="m-4">
-      <Search onSearch={onSearch} />
-      {repos.length > 0 && <SortRepos onSort={onSort} sortType={sortType} />}
-      <div className="flex gap-4 flex-col lg:flex-row justify-center items-start">
-        {userProfile && !loading && <ProfileInfo userProfile={userProfile} />}
+	return (
+		<div className='m-4'>
+			<Search onSearch={onSearch} />
+			{repos.length > 0 && <SortRepos onSort={onSort} sortType={sortType} />}
+			<div className='flex gap-4 flex-col lg:flex-row justify-center items-start'>
+				{userProfile && !loading && <ProfileInfo userProfile={userProfile} />}
 
-        {!loading && <Repos repos={repos} />}
-        {loading && <Spinner />}
-      </div>
-    </div>
-  );
+				{!loading && <Repos repos={repos} />}
+				{loading && <Spinner />}
+			</div>
+		</div>
+	);
 };
-
 export default HomePage;
