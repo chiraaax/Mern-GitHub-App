@@ -41,17 +41,13 @@ const Repo = ({ repo }) => {
 				</span>
 				<span
 					onClick={() => handleCloneClick(repo)}
-					className='cursor-pointer bg-green-100 text-green-800 text-xs
-        font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1'
-				>
+					className='cursor-pointer bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1'>
 					<FaCopy /> Clone
 				</span>
 			</div>
 
 			<time
-				className='block my-1 text-xs font-normal leading-none
-     text-gray-400'
-			>
+				className='block my-1 text-xs font-normal leading-none text-gray-400'>
 				Released on {formattedDate}
 			</time>
 			<p className='mb-4 text-base font-normal text-gray-500'>

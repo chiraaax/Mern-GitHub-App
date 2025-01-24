@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
         type: String,        
     },
     likedProfiles: {
-        type: Array,
+        type: [String],
         default: [],
     },
     likedBy:[
@@ -28,17 +28,17 @@ const userSchema = new mongoose.Schema({
                 required: true,
             },
             avatarUrl: {
-                type: String,
-                required: true,
+                type: String,                
             },
             likedDate: {
                 type: Date,
                 default: Date.now,
-            }
-        }
-    ]
-   
-},{timestamps: true});
+            },
+        },
+    ],   
+},
+
+{timestamps: true});
 //createdAt, updatedAt
 
 const User = mongoose.model("User", userSchema);

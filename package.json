@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon backend/server.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend", 
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
     "start": "node backend/server.js"
   },
   "repository": {
@@ -21,13 +21,16 @@
   "homepage": "https://github.com/chiraaax/Mern-GitHub-Project#readme",
   "description": "",
   "dependencies": {
+    "autoprefixer": "^10.4.20",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
     "mongoose": "^8.9.5",
     "passport": "^0.7.0",
-    "passport-github2": "^0.1.12"
+    "passport-github2": "^0.1.12",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

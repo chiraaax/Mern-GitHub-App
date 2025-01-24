@@ -15,7 +15,7 @@ const ExplorePage = () => {
 		setRepos([]);
 		try {
 			
-			const res = await fetch (`/api/explore/repos/`+ language);
+			const res = await fetch ("/api/explore/repos/" + language);
 			const { repos } = await res.json();
 			setRepos(repos);
 
@@ -33,7 +33,7 @@ const ExplorePage = () => {
 				<div className='flex flex-wrap gap-2 my-2 justify-center'>
 					<img
 						src='/javascript.svg'
-						alt='JavaScript ogo'
+						alt='JavaScript logo'
 						className='h-11 sm:h-20 cursor-pointer'
 						onClick={() => exploreRepos("javascript")}
 					/>					
