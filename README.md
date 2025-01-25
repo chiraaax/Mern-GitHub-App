@@ -4,7 +4,7 @@
 ---
 
 ## 🚀 Overview  
-**GitBridge** is a cutting-edge GitHub integration system designed to streamline your workflow. The app integrates seamlessly with **GitHub's API** to provide users with a modern and feature-rich platform to interact with their GitHub profiles and repositories. GitBridge Built using the **MERN stack** and **Passport.js**, allows users to securely manage their GitHub accounts, explore repositories, interact with other users, and much more - all in an elegant, interactive interface.  
+**GitBridge** is a cutting-edge GitHub integration system designed to streamline your workflow. The app integrates seamlessly with **GitHub's OAuth2 API** to provide users with secured authentication combined modern and feature-rich platform to interact with their GitHub profiles and repositories. GitBridge Built using the **MERN stack** and **Passport.js**, allows users to securely manage their GitHub accounts, explore repositories, interact with other users, and much more - all in an elegant, interactive interface.  
 
 Whether you're a developer, contributor, or enthusiast, GitBridge is here to make your GitHub experience smoother and more engaging.  
 
