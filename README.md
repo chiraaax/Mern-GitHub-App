@@ -42,13 +42,33 @@ Whether you're a developer, contributor, or enthusiast, GitBridge is here to mak
 
 ## 📸 Screenshots  
   
-1. **Login Interface**  
+1. **Login Interface**
+
+![Login Interface](https://github.com/chiraaax/Mern-GitHub-App/blob/main/screenshots/LOGIN.PNG?raw=true)
    
-2. **Profile Dashboard**
+2. **Sign-Up Interface**
 
-3. **User Search and Interaction**
+![SignUp Interface](https://github.com/chiraaax/Mern-GitHub-App/blob/main/screenshots/SIGN-UP.PNG?raw=true)
 
-4. **Popular Repository Exploration**
+3. **Authentication**
+
+![Authentication](https://github.com/chiraaax/Mern-GitHub-App/blob/main/screenshots/AUTH.PNG?raw=true)
+
+
+4. **Profile Dashboard**
+
+![Profile Dashboard](https://github.com/chiraaax/Mern-GitHub-App/blob/main/screenshots/MAIN-INTERFACE(PROFILE).PNG?raw=true)
+
+
+5. **User Search and Interaction**
+
+![User Search and Interaction](https://github.com/chiraaax/Mern-GitHub-App/blob/main/screenshots/SEARCH%20PROFILES.PNG?raw=true)
+
+
+6. **Popular Repository Exploration**
+
+![Popular Repository Exploration](https://github.com/chiraaax/Mern-GitHub-App/blob/main/screenshots/REPO.PNG?raw=true)
+
     
 ---
 
